@@ -8,6 +8,7 @@ int count_digit(int n)
     int ct = 0;
     while (n)
     {
+        cout << n % 10 << endl;
         n = n / 10;
         ct++;
     }
