@@ -19,7 +19,7 @@ void pattern(int n)
         space += 2;
     }
     // Second Half
-    space = 8;
+    space = 2 * n - 2;
     for (int i = 0; i < n; i++)
     {
         // stars i
