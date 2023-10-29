@@ -1,5 +1,5 @@
-count of 2 : 2
-count of 1 : 2
-count of 5 : 2
-count of 7 : 1
-count of 3 : 1
+count of a : 2
+count of g : 0
+count of h : 1
+count of b : 2
+count of c : 1
