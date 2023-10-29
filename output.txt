@@ -1,5 +1,1 @@
-count of a : 2
-count of g : 0
-count of h : 1
-count of b : 2
-count of c : 1
+9 13 20 24 46 52 
