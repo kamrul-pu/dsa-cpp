@@ -1,2 +1,5 @@
-832040
-832040
+count of 2 : 2
+count of 1 : 2
+count of 5 : 2
+count of 7 : 1
+count of 10 : 2
