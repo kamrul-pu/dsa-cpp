@@ -26,7 +26,7 @@ void nextPermutaion(int a[], int n)
         reverse(a, a + n);
         return;
     }
-    for (int i = n - 1; i >= 0; i--)
+    for (int i = n - 1; i > ind; i--)
     {
         if (a[i] > a[ind])
         {
