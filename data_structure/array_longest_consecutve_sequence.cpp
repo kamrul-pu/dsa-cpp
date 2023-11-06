@@ -1,5 +1,6 @@
 #include <bits/stdc++.h>
 #include <vector>
+#include <unordered_set>
 using namespace std;
 
 void print(vector<int> &arr, int n)
@@ -51,6 +52,35 @@ int longest_consecutive_sequence1(vector<int> &a, int n)
     }
     return longest;
 }
+
+int longest_consecutive_sequence2(vector<int> &a, int n)
+{
+    if (n == 0)
+        return 0;
+    int longest = 1;
+    unordered_set<int> st;
+    // insert the unique element in the set
+    for (int i = 0; i < n; i++)
+    {
+        st.insert(a[i]);
+    }
+    for (auto it : st)
+    {
+        if (st.find(it - 1) == st.end())
+        {
+            int cnt = 1;
+            int x = it;
+            while (st.find(x + 1) != st.end())
+            {
+                x++;
+                cnt++;
+            }
+            longest = max(longest, cnt);
+        }
+    }
+    return longest;
+}
+
 int main()
 {
     int n;
@@ -60,8 +90,8 @@ int main()
     {
         cin >> a[i];
     }
-    sort(a.begin(), a.end());
+    // sort(a.begin(), a.end());
     print(a, n);
-    cout << longest_consecutive_sequence1(a, n) << endl;
+    cout << longest_consecutive_sequence2(a, n) << endl;
     return 0;
 }
