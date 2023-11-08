@@ -26,117 +26,45 @@ void markRow(int i, int m)
     }
 }
 
-void markCol(int j, int n)
+void spiral_matrix(int n, int m)
 {
-    for (int i = 0; i < n; i++)
+    int left = 0, right = m - 1;
+    int top = 0, bottom = n - 1;
+    while (top <= bottom && left <= right)
     {
-        a[i][j] = -1;
-    }
-}
-
-void markZeros(int n, int m)
-{
-    for (int i = 0; i < n; i++)
-    {
-        for (int j = 0; j < m; j++)
+        // left to right
+        for (int i = left; i <= right; i++)
         {
-            if (a[i][j] == -1)
-            {
-                a[i][j] = 0;
-            }
+            cout << a[top][i] << " ";
         }
-    }
-}
-
-void set_matrix_zeros(int n, int m)
-{
-    for (int i = 0; i < n; i++)
-    {
-        for (int j = 0; j < m; j++)
+        top++;
+        // top  to bottom
+        for (int i = top; i <= bottom; i++)
         {
-            if (a[i][j] == 0)
-            {
-                markRow(i, m);
-                markCol(j, n);
-            }
+            cout << a[i][right] << " ";
         }
-    }
-    markZeros(n, m);
-}
-void mark_row_col(int row[], int col[], int n, int m)
-{
-    for (int i = 0; i < n; i++)
-    {
-        for (int j = 0; j < m; j++)
+        right--;
+        // right to left
+        if (top <= bottom)
         {
-            if (a[i][j] == 0)
+            for (int i = right; i >= left; i--)
             {
-                row[i] = 1;
-                col[j] = 1;
+                cout << a[bottom][i] << " ";
             }
+            bottom--;
         }
-    }
-    // make the row and column zero
-    for (int i = 0; i < n; i++)
-    {
-        for (int j = 0; j < m; j++)
+        // bottom to top
+        if (left <= right)
         {
-            if (row[i] == 1 || col[j] == 1)
+            for (int i = bottom; i >= top; i--)
             {
-                a[i][j] = 0;
+                cout << a[i][left] << " ";
             }
+            left++;
         }
     }
 }
 
-void mark_zero_optimal(int n, int m)
-{
-    int col0 = 1;
-    for (int i = 0; i < n; i++)
-    {
-        for (int j = 0; j < m; j++)
-        {
-            if (a[i][j] == 0)
-            {
-                // mark the ith row
-                a[i][0] = 0;
-                // mark the jth col
-                if (j != 0)
-                    a[0][j] = 0;
-                else
-                    col0 = 0;
-            }
-        }
-    }
-    for (int i = 1; i < n; i++)
-    {
-        for (int j = 1; j < m; j++)
-        {
-            if (a[i][j] != 0)
-            {
-                // check for col & row
-                if (a[0][j] == 0 || a[i][0] == 0)
-                {
-                    a[i][j] = 0;
-                }
-            }
-        }
-    }
-    if (a[0][0] = 0)
-    {
-        for (int j = 0; j < m; j++)
-        {
-            a[0][j];
-        }
-    }
-    if (col0 == 0)
-    {
-        for (int i = 0; i < n; i++)
-        {
-            a[i][0] = 0;
-        }
-    }
-}
 int main()
 {
     int n, m;
@@ -150,9 +78,6 @@ int main()
     }
     int col[m] = {0}, row[n] = {0};
     print(n, m);
-    // set_matrix_zeros(n, m);
-    // mark_row_col(row, col, n, m);
-    mark_zero_optimal(n, m);
-    print(n, m);
+    spiral_matrix(n, m);
     return 0;
 }
